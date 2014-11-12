@@ -16,7 +16,6 @@ Run it:
 docker run --name scout-agent \
 -v /proc:/host/proc:ro \
 -e KEY=YOURSCOUTKEY scoutapp/scoutd
-docker exec -i -t 68973c0a1348 /bin/bash
 </pre>
 
 ## What's left

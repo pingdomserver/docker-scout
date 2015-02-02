@@ -13,8 +13,5 @@ RUN apt-get install -y -q ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 build-e
 ## Install scoutd
 RUN apt-get install scoutd
 
-# development only. docker_support server_metrics branch supports a different proc folder
-ADD server_metrics /usr/share/scout/ruby/scout-client/scoutd_vendor/server_metrics
-
 USER scoutd
 CMD ["/usr/bin/scoutd", "start"]

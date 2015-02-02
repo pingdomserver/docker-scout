@@ -12,8 +12,8 @@ docker build -t scoutapp/scoutd .
 
 Set your configuration:
 
-edit scoutd.yml
-your account_key is required, all other values are optional
+Edit scoutd.yml.
+Your account_key is required, all other values are optional.
 
 Run it:
 
@@ -43,6 +43,7 @@ The [docker plugin](https://scoutapp.com/plugin_urls/10591-docker-monitoring) re
 ### scoutd config options
 
 Any option may be set in the provided scoutd.yml file. This file must be world-readable and mounted to `/etc/scout/scoutd.yml` (see above command).
+For a list of options, see our [scoutd help page](http://help.scoutapp.com/v1.2/docs/scoutd-beta#configuration).
 
 ## Questions? Using Docker?
 

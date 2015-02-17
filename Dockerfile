@@ -13,5 +13,6 @@ RUN apt-get install -y -q ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 build-e
 ## Install scoutd
 RUN apt-get install scoutd
 
-USER scoutd
+RUN gem install excon # a dependency of the docker_monitor plugin
+
 CMD ["/usr/bin/scoutd", "start"]

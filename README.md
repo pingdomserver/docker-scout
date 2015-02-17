@@ -7,7 +7,7 @@ This a Dockerfile to run the [Scout](https://scoutapp.com) monitoring agent via 
 Build the image:
 
 <pre>
-docker build -t scoutapp/scoutd .
+docker build -t scoutapp/docker-scout .
 </pre>
 
 Set your configuration:
@@ -21,9 +21,9 @@ Run it:
 docker run -d --name scout-agent \
 -v /proc:/host/proc:ro \
 -v /etc/mtab:/host/etc/mtab:ro \
--v /sys/fs/cgroup:/host/sys/fs/cgroup:ro \
+-v /var/run/docker.sock:/host/var/run/docker.sock:ro \
 -v `pwd`/scoutd.yml:/etc/scout/scoutd.yml \
---net=host --privileged scoutapp/scoutd
+--net=host --privileged scoutapp/docker-scout
 </pre>
 
 ### Reading host metrics
@@ -38,7 +38,7 @@ The `--net=host` flag will allow gathering network metrics from the host.
 
 The `--privileged` flag will allow gathering the disk capacity metrics from the host.
 
-The [docker plugin](https://scoutapp.com/plugin_urls/10591-docker-monitoring) requires reading from the `/host/sys/fs/cgroup` (mounted above). This mounting is unnecessary if the docker plugin will not be in use.
+The [docker plugin](https://scoutapp.com/xscout/plugin_urls/19761-docker-monitor) requires reading from `/host/var/run/docker.sock` (mounted above). This mounting is unnecessary if the docker plugin will not be in use.
 
 ### scoutd config options
 
@@ -48,4 +48,3 @@ For a list of options, see our [scoutd help page](http://help.scoutapp.com/v1.2/
 ## Questions? Using Docker?
 
 Shoot us an email at support@scoutapp.com or open an issue.
-

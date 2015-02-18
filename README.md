@@ -1,30 +1,29 @@
 # Scout Dockerfile
 
-This a Dockerfile to run the [Scout](https://scoutapp.com) monitoring agent via a Docker container.
+This a Dockerfile to run the [Scout](https://scoutapp.com) monitoring agent via a Docker container. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
 
 ## Quick Start
 
-Build the image:
 
-<pre>
-docker build -t scoutapp/docker-scout .
-</pre>
+### 1. Create a configuration file
 
-Set your configuration:
+Create a file called `scoutd.yml` (or copy our [template](https://github.com/scoutapp/docker-scout/blob/master/scoutd.yml)).
+__Your account_key is required__, all other values are optional.
+For a list of options, see our [scoutd help page](http://help.scoutapp.com/v1.2/docs/scoutd-beta#configuration).
 
-Edit scoutd.yml.
-Your account_key is required, all other values are optional.
+    account_key: YOUR_SCOUT_ACCOUNT_KEY
 
-Run it:
+### 2. Run the docker image
 
-<pre>
-docker run -d --name scout-agent \
--v /proc:/host/proc:ro \
--v /etc/mtab:/host/etc/mtab:ro \
--v /var/run/docker.sock:/host/var/run/docker.sock:ro \
--v `pwd`/scoutd.yml:/etc/scout/scoutd.yml \
---net=host --privileged scoutapp/docker-scout
-</pre>
+Run the scout image, mounting the `scoutd.yml` file. Running the image will first download the image, if it is not already locally available.
+Run the following command in the directory containing your `scoutd.yml` file: 
+
+    docker run -d --name scout-agent \
+		-v /proc:/host/proc:ro \
+		-v /etc/mtab:/host/etc/mtab:ro \
+		-v /var/run/docker.sock:/host/var/run/docker.sock:ro \
+		-v `pwd`/scoutd.yml:/etc/scout/scoutd.yml \
+		--net=host --privileged scoutapp/docker-scout
 
 ### Reading host metrics
 
@@ -38,13 +37,17 @@ The `--net=host` flag will allow gathering network metrics from the host.
 
 The `--privileged` flag will allow gathering the disk capacity metrics from the host.
 
-The [docker plugin](https://scoutapp.com/xscout/plugin_urls/19761-docker-monitor) requires reading from `/host/var/run/docker.sock` (mounted above). This mounting is unnecessary if the docker plugin will not be in use.
-
 ### scoutd config options
 
 Any option may be set in the provided scoutd.yml file. This file must be world-readable and mounted to `/etc/scout/scoutd.yml` (see above command).
 For a list of options, see our [scoutd help page](http://help.scoutapp.com/v1.2/docs/scoutd-beta#configuration).
 
+## Monitoring Docker Containers
+
+Monitor the resource usage of your running containers with our [__Docker Monitoring Plugin__](https://scoutapp.com/plugin_urls/19761-docker-monitoring). 
+
+The plugin requires reading from `/host/sys/fs/cgroup` (mounted above). This mounting is unnecessary if the docker plugin will not be in use. 
+
 ## Questions? Using Docker?
 
-Shoot us an email at support@scoutapp.com or open an issue.
+Shoot us an email at support@scoutapp.com or open an issue. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).

@@ -2,6 +2,8 @@
 
 This a Dockerfile to run the [Scout](https://scoutapp.com) monitoring agent via a Docker container. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
 
+![docker screenshot](https://dl.dropboxusercontent.com/u/468982/plugin_urls/docker_screenshot.png)
+
 ## Quick Start
 
 

@@ -4,7 +4,7 @@ Scout is server monitoring for the modern dev team: automatic monitoring of key 
 
 [Learn more](https://scoutapp.com).
 
-# Overview
+## Overview
 
 This a Docker container that runs the [Scout](https://scoutapp.com) monitoring agent, monitoring the host. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
 

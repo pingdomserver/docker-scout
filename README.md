@@ -1,8 +1,14 @@
-# Scout Dockerfile
+![scout logo](https://dl.dropboxusercontent.com/u/468982/docker_registry/scout_logo.png)
 
-This a Dockerfile to run the [Scout](https://scoutapp.com) monitoring agent via a Docker container. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
+Scout is server monitoring for the modern dev team: automatic monitoring of key metrics, 80+ plugins to monitor your apps, real-time (every second) streaming dashboards, and flexibile alerting.
 
-!https://dl.dropboxusercontent.com/u/468982/plugin_urls/docker_screenshot.png
+[Learn more](https://scoutapp.com).
+
+# Overview
+
+This a Docker container that runs the [Scout](https://scoutapp.com) monitoring agent, monitoring the host. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
+
+![docker screenshot](https://dl.dropboxusercontent.com/u/468982/plugin_urls/docker_screenshot.png)
 
 ## Quick Start
 
@@ -52,4 +58,4 @@ The plugin requires reading from `/host/sys/fs/cgroup` (mounted above). This mou
 
 ## Questions? Using Docker?
 
-Shoot us an email at support@scoutapp.com or open an issue. Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).
+Shoot us an email at support@scoutapp.com or [open an issue](https://github.com/scoutapp/docker-scout/issues). Full help documentation is available on our [help site](http://help.scoutapp.com/v1.2/docs/docker).

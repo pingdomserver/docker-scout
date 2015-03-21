@@ -15,4 +15,6 @@ RUN apt-get install scoutd=0.4.15-1ubuntu1
 
 RUN gem install excon # a dependency of the docker_monitor plugin
 
+ADD docker_monitor.rb /var/lib/scoutd/.scout/docker_monitor.rb
+
 CMD ["/usr/bin/scoutd", "start"]

@@ -9,3 +9,5 @@ roles:
 agent_data_file:
 http_proxy:
 https_proxy:
+statsd:
+  addr: 172.17.42.1:8125

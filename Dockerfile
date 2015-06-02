@@ -1,4 +1,6 @@
-# docker build -t="scoutapp/scoutd" .
+## Command for rebuilding image file after Dockerfile changes:
+# docker build -t="scoutapp/docker-scout" .
+
 FROM ubuntu:14.04
 
 RUN apt-get update
@@ -13,6 +15,13 @@ RUN apt-get install -y -q ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 build-e
 ## Install scoutd
 RUN apt-get install scoutd=0.5.11-1ubuntu1
 
-RUN gem install excon # a dependency of the docker_monitor plugin
 
-CMD ["/usr/bin/scoutd", "start"]
+RUN gem install docker-api 
+RUN gem install statsd-ruby 
+
+USER root
+COPY docker_events.rb start.sh /
+RUN chmod 777 /start.sh
+RUN chmod 777 /docker_events.rb 
+
+CMD ["sh", "start.sh"]

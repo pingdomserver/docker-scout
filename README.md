@@ -31,6 +31,7 @@ Run the following command in the directory containing your `scoutd.yml` file:
 		-v /etc/mtab:/host/etc/mtab:ro \
 		-v /var/run/docker.sock:/host/var/run/docker.sock:ro \
 		-v `pwd`/scoutd.yml:/etc/scout/scoutd.yml \
+		--restart=always \
 		--net=host --privileged scoutapp/docker-scout
 
 ### Reading host metrics

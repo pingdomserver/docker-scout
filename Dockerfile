@@ -5,16 +5,18 @@ RUN apt-get update
 RUN apt-get install -y wget
 RUN wget -q -O - https://archive.scoutapp.com/scout-archive.key | apt-key add -
 RUN echo 'deb http://archive.scoutapp.com ubuntu main' | tee /etc/apt/sources.list.d/scout.list
+RUN apt-get install software-properties-common
+RUN apt-add-repository -y ppa:brightbox/ruby-ng
 RUN apt-get update
 
 ## RUBY
-RUN apt-get install -y -q ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 build-essential libopenssl-ruby1.9.1 libssl-dev zlib1g-dev
+RUN apt-get install -y -q ruby2.2 ruby2.2-dev build-essential libssl-dev zlib1g-dev
 
 ## Install scoutd
-RUN apt-get install scoutd=0.5.11-1ubuntu1
+RUN apt-get install scoutd=0.5.18-1ubuntu1
 
-RUN gem install docker-api 
-RUN gem install statsd-ruby 
+RUN gem install docker-api
+RUN gem install statsd-ruby
 
 USER root
 COPY docker_events.rb start.sh /

@@ -1,4 +1,4 @@
-# docker build -t="scoutapp/scoutd" .
+# docker build -t="scoutapp/docker-scout" .
 FROM ubuntu:16.04
 
 RUN apt-get update

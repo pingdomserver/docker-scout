@@ -1,5 +1,5 @@
-# docker build -t="scoutapp/scoutd" .
-FROM ubuntu:14.04
+# docker build -t="scoutapp/docker-scout" .
+FROM ubuntu:16.04
 
 RUN apt-get update
 RUN apt-get install -y wget
@@ -8,10 +8,10 @@ RUN echo 'deb http://archive.scoutapp.com ubuntu main' | tee /etc/apt/sources.li
 RUN apt-get update
 
 ## RUBY
-RUN apt-get install -y -q ruby1.9.1 ruby1.9.1-dev rubygems1.9.1 irb1.9.1 build-essential libopenssl-ruby1.9.1 libssl-dev zlib1g-dev
+RUN apt-get install -y -q ruby
 
 ## Install scoutd
-RUN apt-get install scoutd=0.5.11-1ubuntu1
+RUN apt-get install scoutd=0.5.20-1ubuntu1
 
 RUN gem install docker-api 
 RUN gem install statsd-ruby 

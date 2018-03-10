@@ -11,7 +11,7 @@ RUN apt-get update
 RUN apt-get install -y -q ruby
 
 ## Install scoutd
-RUN apt-get install scoutd=0.5.34-1ubuntu1
+RUN apt-get install scoutd=0.5.33-1ubuntu1
 
 RUN gem install docker-api
 RUN gem install statsd-ruby

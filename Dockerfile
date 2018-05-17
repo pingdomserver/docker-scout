@@ -3,8 +3,8 @@ FROM ubuntu:16.04
 
 RUN apt-get update
 RUN apt-get install -y wget
-RUN wget -q -O - https://archive.scoutapp.com/scout-archive.key | apt-key add -
-RUN echo 'deb http://archive.scoutapp.com ubuntu main' | tee /etc/apt/sources.list.d/scout.list
+RUN wget -q -O - https://archive.server.pingdom.com/scout-archive.key | apt-key add -
+RUN echo 'deb http://archive.server.pingdom.com ubuntu main' | tee /etc/apt/sources.list.d/scout.list
 RUN apt-get update
 
 ## RUBY
